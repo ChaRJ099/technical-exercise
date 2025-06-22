@@ -6,7 +6,14 @@ import {
   confirmApplication,
 } from "./api.js";
 
-// Fonction principale
+/**
+ * Fonction principale orchestrant l'ensemble du processus :
+ * - inscription
+ * - authentification
+ * - création de candidature
+ * - polling jusqu'au statut COMPLETED
+ * - confirmation finale
+ */
 async function main() {
   try {
     const registeredStatus = await register();
