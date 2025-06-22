@@ -17,55 +17,55 @@ Le script automatise les étapes suivantes :
 - **Node.js** (version recommandée : ≥ 18.x)
 - **JavaScript** (ES6+)
 - API **Fetch** natif (aucune dépendance externe)
+- Fichier `.env` pour la configuration utilisateur
 
 ## Arborescence
 
 technical-exercise/
 ├── src/
-│ └── index.js # Script principal
+│ ├── index.js # Script principal
+│ └── api.js # Fonctions d’appel à l’API
+├── .env # Données sensibles de test
 ├── .gitignore
 ├── package.json
 ├── README.md
 
 ## Installation
 
-Cloner le dépôt puis installer les dépendances :
+Cloner le dépôt puis initialiser le projet :
 
 ```bash
 git clone https://github.com/ChaRJ099/technical-exercise.git
-
+cd technical-exercise
 npm install
 ```
+## Configuration des variables d'environnement
+Créer un fichier .env à la racine du projet contenant les données de test comme ceci :
 
-Ce projet n'utilise pas de dépendances Node, mais la commande npm install est utile pour initialiser le projet si besoin (ex. future extension).
+```dotenv
+EMAIL=test.user@example.com
+PASSWORD1=StrongPassword123
+PASSWORD2=StrongPassword123
+FIRST_NAME=Test
+LAST_NAME=User
+```
 
-## ▶️ Lancer le script
+Ce fichier contient des informations sensibles, il est ignoré par Git grâce au .gitignore.
+
+## Lancer le script
 
 npm run start
 
-Assurez-vous que votre version de Node est compatible (node -v doit retourner ≥ 18.x, sinon les appels fetch() échoueront).
+Assurez-vous que votre version de Node est compatible (node -v doit retourner ≥ 18.x), sinon les appels fetch() échoueront.
 
-## Données de test
-Le fichier src/index.js contient les données de test suivantes :
+## Détails techniques
 
-const userData = {
-  email: "charline.test@demo.com",
-  password1: "motDePasseSolide123",
-  password2: "motDePasseSolide123",
-  first_name: "Charline",
-  last_name: "Ramelet",
-};
+-Le script utilise un système de polling toutes les 2 secondes pendant 10 tentatives maximum.
 
-=> Modifiez ces données si vous exécutez plusieurs fois le script pour éviter les conflits d’inscription.
+-La confirmation (PATCH) doit être envoyée moins de 30 secondes après le début du test, conformément à la consigne.
 
-## Données de test
-- La confirmation doit être envoyée moins de 30 secondes après le début du test.
+-Toutes les erreurs sont gérées avec des messages explicites dans la console.
 
-- En cas d’échec à une étape, une erreur explicite est affichée dans la console.
-
-- Le script utilise un système de polling avec temporisation pour interroger l’API toutes les 2 secondes, jusqu’à 10 tentatives.
-
-## Contact
-Ce test a été réalisé par *Charline Ramelet* dans le cadre du processus de recrutement Pertimm.
-N'hésitez pas à me contacter pour toute précision technique ou suggestion.
-
+## Auteur
+Ce test a été réalisé par Charline Ramelet dans le cadre du processus de recrutement Pertimm.
+Pour toute question ou précision, n'hésitez pas à me contacter.
