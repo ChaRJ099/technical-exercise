@@ -1,12 +1,14 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 const BASE_URL = "https://hire-game.pertimm.dev";
 
-
 const userData = {
-  email: "charline.test@demo.com",
-  password1: "motDePasseSolide123",
-  password2: "motDePasseSolide123",
-  first_name: "Charline",
-  last_name: "Ramelet",
+  email: process.env.EMAIL,
+  password1: process.env.PASSWORD1,
+  password2: process.env.PASSWORD2,
+  first_name: process.env.FIRST_NAME,
+  last_name: process.env.LAST_NAME,
 };
 
 // Enregistrer un utilisateur
