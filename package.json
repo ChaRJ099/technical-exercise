@@ -4,7 +4,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./dist/app.js"
+    "start": "node src/index.js"
   },
   "keywords": [],
   "author": "",
@@ -12,10 +12,6 @@
   "description": "",
   "devDependencies": {
     "@types/node": "18.18.2",
-    "tsx": "^4.20.3",
-    "typescript": "5.4.5"
-  },
-  "dependencies": {
-    "express": "^5.1.0"
+    "tsx": "^4.20.3"
   }
 }

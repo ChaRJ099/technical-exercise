@@ -1,25 +1,29 @@
-# 📄 Test technique Pertimm
+# Test Technique Pertimm
 
-Ce projet est une implémentation en JavaScript (Node.js) permettant d'interagir avec une API basée sur **Concrete Datastore**, dans le cadre du test technique proposé par Pertimm.
-
-## 🎯 Objectifs
-
+Ce projet a pour objectif de répondre au test technique proposé par Pertimm, consistant à interagir avec une API basée sur **Concrete Datastore**.  
 Le script automatise les étapes suivantes :
-1. 🔐 Enregistrement (`/auth/register/`)
-2. 🔑 Connexion (`/auth/login/`)
-3. 📝 Création d'une candidature (`/job-application-request/`)
-4. 🔄 Polling jusqu'à obtention du statut `COMPLETED`
-5. ✅ Confirmation de la candidature via un `PATCH`
 
-## ⚙️ Prérequis
+1. Enregistrement d’un utilisateur
+2. Connexion pour obtenir un token
+3. Création d’une demande de candidature
+4. Attente du statut `COMPLETED`
+5. Confirmation de la candidature
 
-- Node.js v18 ou supérieur (compatible avec `fetch` en natif)
-- Environnement Unix/Linux (testé sous WSL Debian)
+## Technologies utilisées
 
-## 🚀 Lancer le test
+- Node.js (version recommandée : 18.x)
+- JavaScript (ES6+)
+- `fetch` natif (aucune dépendance externe)
 
-1. Cloner le projet :
+## 🛠️ Installation
+
+Cloner ce dépôt puis installer les dépendances :
 
 ```bash
-git clone https://github.com/votre-nom-utilisateur/pertimm-test.git
-cd pertimm-test
+git clone https://github.com/votre-utilisateur/technical-exercise.git
+cd technical-exercise
+npm install
+
+## Lancer le script
+
+npm run start
