@@ -27,3 +27,7 @@ package-lock.json
 # Compilation JS (si tu gardais un dossier dist)
 dist/
 
+# Fichier d’environnement
+.env
+
+
