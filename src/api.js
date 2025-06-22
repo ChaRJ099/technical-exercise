@@ -88,10 +88,9 @@ export const createApplication = async (token) => {
 
     const data = await response.json();
     console.log("Application créée !");
-    console.log("URL de polling :", data.url);
     return data.url; // Pour l'étape suivante
   } catch (error) {
-    console.error("Error", error.message);
+console.error("Erreur lors de la création de l'application :", error.message);
     return null;
   }
 };
@@ -156,20 +155,20 @@ export const confirmApplication = async (token, confirmationUrl) => {
 
     // Si la réponse HTTP n'est pas OK (statut 200–299), on lance une erreur explicite
     if (!response.ok) {
-      throw new Error(`❌ Échec de la confirmation : ${response.status}`);
+      throw new Error(`Échec de la confirmation : ${response.status}`);
     }
 
     // Récupération de la réponse JSON (peut contenir un message ou un état)
     const data = await response.json();
 
     // Journalisation de la confirmation réussie
-    console.log("🎉 Candidature confirmée :", data);
+    console.log("Candidature confirmée :", data);
 
     // On retourne les données pour éventuellement les utiliser ou les afficher
     return data;
   } catch (error) {
     // En cas d'échec du PATCH, on logue une erreur claire
-    console.error("❌ Erreur lors de la confirmation :", error.message);
+    console.error("Erreur lors de la confirmation :", error.message);
     return null; // On retourne null pour garder la chaîne logique dans la fonction principale
   }
 };
