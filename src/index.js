@@ -21,7 +21,8 @@ import {
 async function main() {
   try {
     const registeredStatus = await register();
-    if (registeredStatus !== 200) throw new Error("Échec de l'inscription");
+    if (![200, 201, 409].includes(registeredStatus))
+      throw new Error("Échec de l'inscription");
 
     const token = await login();
     if (!token) throw new Error("Token non récupéré après le login");
