@@ -39,7 +39,9 @@ git clone https://github.com/ChaRJ099/technical-exercise.git
 cd technical-exercise
 npm install
 ```
+
 ## Configuration des variables d'environnement
+
 Créer un fichier .env à la racine du projet contenant les données de test comme ceci :
 
 ```dotenv
@@ -61,11 +63,22 @@ Assurez-vous que votre version de Node est compatible (node -v doit retourner �
 ## Détails techniques
 
 -Le script utilise un système de polling toutes les 2 secondes pendant 10 tentatives maximum.
-
 -La confirmation (PATCH) doit être envoyée moins de 30 secondes après le début du test, conformément à la consigne.
-
 -Toutes les erreurs sont gérées avec des messages explicites dans la console.
 
+## Sources et documentation
+
+Ce projet s’est appuyé sur plusieurs ressources externes pour respecter les bonnes pratiques JavaScript et les mécanismes de communication avec une API :
+
+## 🔗 Sources et références
+
+- [MDN Web Docs – Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+- [MDN Web Docs – Promises en JavaScript](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+- [Dev.to – Polling Requests to an API in JavaScript](https://dev.to/siddharthssb11/polling-requests-to-an-api-in-javascript-1g2d)
+- [Medium – Exploring Short Polling in JavaScript (Mar 2024)](https://medium.com/@chaganti.sailesh/exploring-short-polling-in-javascript-a-real-time-approach-to-data-updates-765805cc88c5)
+- Documentation fournie par Pertimm (API Concrete Datastore)
+
 ## Auteur
+
 Ce test a été réalisé par Charline Ramelet dans le cadre du processus de recrutement Pertimm.
 Pour toute question ou précision, n'hésitez pas à me contacter.
