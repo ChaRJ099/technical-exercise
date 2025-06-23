@@ -90,19 +90,21 @@ export const createApplication = async (token) => {
     console.log("Application créée !");
     return data.url; // Pour l'étape suivante
   } catch (error) {
-console.error("Erreur lors de la création de l'application :", error.message);
+    console.error(
+      "Erreur lors de la création de l'application :",
+      error.message
+    );
     return null;
   }
 };
 
 // Fonction de polling qui interroge régulièrement l’API jusqu’à obtention du statut "COMPLETED"
 export const waitForCompletion = async (token, pollingUrl) => {
-  const maxRetries = 10; // Nombre maximum de tentatives avant d’abandonner
-  const delay = 2000; // Délai d’attente entre deux requêtes (en millisecondes)
+  const maxRetries = 10;
+  const delay = 2000;
 
   for (let attempt = 0; attempt < maxRetries; attempt++) {
     try {
-      // Envoi d’une requête GET avec authentification
       const response = await fetch(pollingUrl, {
         method: "GET",
         headers: {
@@ -116,11 +118,10 @@ export const waitForCompletion = async (token, pollingUrl) => {
 
       const data = await response.json();
 
-      // Vérifie si le statut retourné est "COMPLETED"
       if (data.status === "COMPLETED") {
         console.log("Statut COMPLETED atteint");
         console.log("Confirmation URL :", data.confirmation_url);
-        return data.confirmation_url; // Retourne l’URL de confirmation dès que l’état est bon
+        return data.confirmation_url;
       }
 
       console.log(`Tentative ${attempt + 1} : statut actuel = ${data.status}`);
@@ -129,7 +130,7 @@ export const waitForCompletion = async (token, pollingUrl) => {
       await new Promise((resolve) => setTimeout(resolve, delay));
     } catch (error) {
       console.error("Erreur pendant le polling :", error.message);
-      break; // Quitte la boucle en cas d’erreur critique
+      break;
     }
   }
 
@@ -143,32 +144,25 @@ export const waitForCompletion = async (token, pollingUrl) => {
 // Envoi de la confirmation de candidature à l'API
 export const confirmApplication = async (token, confirmationUrl) => {
   try {
-    // Envoi d'une requête PATCH sur l'URL obtenue à l'étape précédente
     const response = await fetch(confirmationUrl, {
-      method: "PATCH", // Méthode HTTP adaptée à la mise à jour partielle d'une ressource
+      method: "PATCH",
       headers: {
-        "Content-Type": "application/json", // Format des données envoyées
-        Authorization: `Token ${token}`,    // Authentification avec le token obtenu après login
+        "Content-Type": "application/json",
+        Authorization: `Token ${token}`,
       },
-      body: JSON.stringify({ confirmed: true }), // Corps de la requête : on confirme la candidature
+      body: JSON.stringify({ confirmed: true }),
     });
 
-    // Si la réponse HTTP n'est pas OK (statut 200–299), on lance une erreur explicite
     if (!response.ok) {
       throw new Error(`Échec de la confirmation : ${response.status}`);
     }
 
-    // Récupération de la réponse JSON (peut contenir un message ou un état)
     const data = await response.json();
 
-    // Journalisation de la confirmation réussie
     console.log("Candidature confirmée :", data);
-
-    // On retourne les données pour éventuellement les utiliser ou les afficher
     return data;
   } catch (error) {
-    // En cas d'échec du PATCH, on logue une erreur claire
     console.error("Erreur lors de la confirmation :", error.message);
-    return null; // On retourne null pour garder la chaîne logique dans la fonction principale
+    return null;
   }
 };
