@@ -51,9 +51,9 @@ Assurez-vous que votre version de Node est compatible (node -v doit retourner �
 
 ## Détails techniques
 
--Le script utilise un système de polling toutes les 2 secondes pendant 10 tentatives maximum.
--La confirmation (PATCH) doit être envoyée moins de 30 secondes après le début du test, conformément à la consigne.
--Toutes les erreurs sont gérées avec des messages explicites dans la console.
+- Le script utilise un système de polling toutes les 2 secondes pendant 10 tentatives maximum.
+- La confirmation (PATCH) doit être envoyée moins de 30 secondes après le début du test, conformément à la consigne.
+- Toutes les erreurs sont gérées avec des messages explicites dans la console.
 
 ## Sources et documentation
 
