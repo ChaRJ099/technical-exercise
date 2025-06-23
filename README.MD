@@ -14,7 +14,7 @@ Le script automatise les étapes suivantes :
 
 ## Technologies utilisées
 
-- **Node.js** (version recommandée : ≥ 18.x)
+- **Node.js** (version ~22.x)
 - **JavaScript** (ES6+)
 - API **Fetch** natif (aucune dépendance externe)
 - Fichier `.env` pour la configuration utilisateur
@@ -63,6 +63,7 @@ Ce projet s’est appuyé sur plusieurs ressources externes pour respecter les b
 - [MDN Web Docs – Promises en JavaScript](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 - [Dev.to – Polling Requests to an API in JavaScript](https://dev.to/siddharthssb11/polling-requests-to-an-api-in-javascript-1g2d)
 - [Medium – Exploring Short Polling in JavaScript (Mar 2024)](https://medium.com/@SejalPande1994/exploring-short-polling-in-javascript-a-real-time-approach-to-data-updates-643d5c016d99)
+- [JSDoc – Documentation officielle](https://jsdoc.app/)
 - Documentation fournie par Pertimm (API Concrete Datastore)
 
 ## Auteur
