@@ -11,7 +11,13 @@ const userData = {
   last_name: process.env.LAST_NAME,
 };
 
-// Enregistrer un utilisateur
+/**
+ * Enregistre un nouvel utilisateur via l’API d’inscription.
+ *
+ * Les données d’utilisateur sont récupérées depuis les variables d’environnement.
+ *
+ * @returns {Promise<number|undefined>} Le statut HTTP (ex: 200) si la requête réussit, sinon `undefined` en cas d’erreur
+ */
 export const register = async () => {
   const { email, password1, password2, first_name, last_name } = userData;
 
@@ -41,7 +47,13 @@ export const register = async () => {
   }
 };
 
-// Connexion et récupération du token
+/**
+ * Connecte un utilisateur et récupère un jeton d’authentification.
+ *
+ * Les identifiants sont récupérés depuis les variables d’environnement.
+ *
+ * @returns {Promise<string|undefined>} Le token JWT si la connexion réussit, sinon `undefined`
+ */
 export const login = async () => {
   const { email, password1 } = userData;
   try {
@@ -65,7 +77,12 @@ export const login = async () => {
   }
 };
 
-// Création de l'application
+/**
+ * Crée une nouvelle demande de candidature via l’API.
+ *
+ * @param {string} token Le jeton d’authentification de l’utilisateur (reçu après login)
+ * @returns {Promise<string|null>} L’URL de polling reçue de l’API, ou `null` en cas d’erreur
+ */
 export const createApplication = async (token) => {
   const { email, first_name, last_name } = userData;
 
@@ -98,7 +115,13 @@ export const createApplication = async (token) => {
   }
 };
 
-// Fonction de polling qui interroge régulièrement l’API jusqu’à obtention du statut "COMPLETED"
+/**
+ * Effectue un polling sur l’URL donnée jusqu’à ce que le statut de la candidature soit "COMPLETED".
+ *
+ * @param {string} token Le jeton d’authentification de l’utilisateur
+ * @param {string} pollingUrl L’URL fournie par l’API pour surveiller l’état de la candidature
+ * @returns {Promise<string|null>} L’URL de confirmation à utiliser dans la dernière étape, ou `null` si le statut n’a pas été atteint
+ */
 export const waitForCompletion = async (token, pollingUrl) => {
   const maxRetries = 10;
   const delay = 2000;
@@ -134,7 +157,13 @@ export const waitForCompletion = async (token, pollingUrl) => {
     }
   }
 
-  // Si le statut "COMPLETED" n’est jamais atteint
+  /**
+   * Envoie une requête PATCH à l’API pour confirmer la candidature.
+   *
+   * @param {string} token Le jeton d’authentification de l’utilisateur
+   * @param {string} confirmationUrl L’URL dédiée fournie par l’API pour confirmer la candidature
+   * @returns {Promise<Object|null>} Les données retournées par l’API après confirmation, ou `null` en cas d’échec
+   */
   console.error(
     "Timeout : statut COMPLETED non atteint après plusieurs tentatives"
   );

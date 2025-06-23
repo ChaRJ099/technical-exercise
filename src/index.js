@@ -7,12 +7,16 @@ import {
 } from "./api.js";
 
 /**
- * Fonction principale orchestrant l'ensemble du processus :
- * - inscription
- * - authentification
- * - création de candidature
- * - polling jusqu'au statut COMPLETED
- * - confirmation finale
+ * Fonction principale orchestrant l’ensemble du processus de candidature :
+ * - Enregistre un utilisateur
+ * - Connecte l’utilisateur et récupère le token
+ * - Crée une demande de candidature
+ * - Attend que le statut passe à "COMPLETED" via polling
+ * - Confirme la candidature dans un délai de 30 secondes
+ *
+ * Toutes les erreurs sont capturées via un bloc try/catch.
+ *
+ * @returns {Promise<void>}
  */
 async function main() {
   try {
@@ -35,5 +39,4 @@ async function main() {
   }
 }
 
-// Lancement du script
 main();
