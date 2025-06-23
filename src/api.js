@@ -36,16 +36,6 @@ export const register = async () => {
       }),
     });
 
-    if (response.status === 400) {
-      const data = await response.json();
-      if (data.email && data.email[0].includes("already exists")) {
-        console.warn("⚠️ Utilisateur déjà inscrit. On continue le script.");
-        return 409; // code choisi pour signaler une duplication
-      } else {
-        throw new Error("Erreur d'inscription : " + JSON.stringify(data));
-      }
-    }
-
     if (!response.ok) {
       throw new Error(`Register failed: ${response.status}`);
     } else {
@@ -159,7 +149,6 @@ export const waitForCompletion = async (token, pollingUrl) => {
 
       console.log(`Tentative ${attempt + 1} : statut actuel = ${data.status}`);
 
-      // Attente avant de relancer une nouvelle tentative
       await new Promise((resolve) => setTimeout(resolve, delay));
     } catch (error) {
       console.error("Erreur pendant le polling :", error.message);
