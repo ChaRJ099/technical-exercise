@@ -16,8 +16,18 @@ Thumbs.db
 .env
 
 # Build output (si jamais tu fais du TS ou bundling plus tard)
-dist/
 build/
 
 # Cache
 .cache/
+
+# Lockfile
+package-lock.json
+
+# Compilation JS (si tu gardais un dossier dist)
+dist/
+
+# Fichier d’environnement
+.env
+
+
