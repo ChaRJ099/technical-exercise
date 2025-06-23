@@ -59,8 +59,6 @@ Assurez-vous que votre version de Node est compatible (node -v doit retourner �
 
 Ce projet s’est appuyé sur plusieurs ressources externes pour respecter les bonnes pratiques JavaScript et les mécanismes de communication avec une API :
 
-## 🔗 Sources et références
-
 - [MDN Web Docs – Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 - [MDN Web Docs – Promises en JavaScript](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 - [Dev.to – Polling Requests to an API in JavaScript](https://dev.to/siddharthssb11/polling-requests-to-an-api-in-javascript-1g2d)
