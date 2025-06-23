@@ -19,17 +19,6 @@ Le script automatise les étapes suivantes :
 - API **Fetch** natif (aucune dépendance externe)
 - Fichier `.env` pour la configuration utilisateur
 
-## Arborescence
-
-technical-exercise/
-├── src/
-│ ├── index.js # Script principal
-│ └── api.js # Fonctions d’appel à l’API
-├── .env # Données sensibles de test
-├── .gitignore
-├── package.json
-├── README.md
-
 ## Installation
 
 Cloner le dépôt puis initialiser le projet :
